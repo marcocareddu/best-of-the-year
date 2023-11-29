@@ -1,11 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Single element</title>
+	<meta charset="ISO-8859-1">
+	<title>Single element</title>
+	<!-- Bootstrap -->
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}">
+
+	<!-- CSS -->
+	<link rel="stylesheet" th:href="@{/css/application.css}">
 </head>
+
 <body>
-	<h1>Elemento corrispondente all'id: </h1>
-	<p>[[${title}]]</p>
+	<div th:fragment="navbar" class="container">
+		<h1 class="text-center">[[${type}]] corrispondente all'id</h1>
+
+		<div class="d-flex justify-content-center">
+			<h3>[[${title}]]</h3>
+		</div>
+	</div>
+
 </body>
+
 </html>

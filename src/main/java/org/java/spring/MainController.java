@@ -57,6 +57,7 @@ public class MainController {
 				break;
 			}
 		}
+	    model.addAttribute("type", "Film");
 	    model.addAttribute("title", movieTitle);
 	    return "single";
 	}
@@ -75,6 +76,7 @@ public class MainController {
 			}
 		}
 	    model.addAttribute("title", songTitle);
+	    model.addAttribute("type", "Canzone");
 	    return "single";
 	}
 }
