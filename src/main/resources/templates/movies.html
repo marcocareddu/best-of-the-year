@@ -18,7 +18,7 @@
 	<div class="d-flex justify-content-center">
 		<ul class="list-group">
 			<li th:each="movie : ${moviesList}" class="list-group-item">
-				<a th:insert="~{frags :: button-single(@{'/movies/' + ${movie.id}}, ${movie.title})}"></a>
+				<a th:insert="~{frags :: button-link(@{'/movies/' + ${movie.id}}, ${movie.title})}"></a>
 			</li>
 		</ul>
 	</div>
