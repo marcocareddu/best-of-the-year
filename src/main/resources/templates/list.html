@@ -13,12 +13,18 @@
 
 <body>
 	<div th:fragment="navbar" class="container">
-		<h1 class="text-center">Best Movies</h1>
+		<h1 class="text-center">Best list [[${type}]]</h1>
 	</div>
 	<div class="d-flex justify-content-center">
 		<ul class="list-group">
-			<li th:each="movie : ${moviesList}" class="list-group-item">
-				<a th:insert="~{frags :: button-link(@{'/movies/' + ${movie.id}}, ${movie.title})}"></a>
+
+			<li th:each="element : ${list}" class="list-group-item">
+				<th:block th:if="${type == 'songs'}">
+					<a th:insert="~{frags :: button-link(@{'/songs/' + ${element.id}}, ${element.title})}"></a>
+				</th:block>
+				<th:block th:if="${type == 'movies'}">
+					<a th:insert="~{frags :: button-link(@{'/movies/' + ${element.id}}, ${element.title})}"></a>
+				</th:block>
 			</li>
 		</ul>
 	</div>

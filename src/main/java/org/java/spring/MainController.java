@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 public class MainController {
 
-
 	@GetMapping("/")
 	public String index(Model model) {
 		String name = "Marco";
@@ -31,16 +30,18 @@ public class MainController {
 	@GetMapping("/movies")
 	public String getMovies(Model model) {
 		List<Movie> movies = getBestMovies();
-		model.addAttribute("moviesList", movies);
-		return "movies";
+		model.addAttribute("list", movies);
+	    model.addAttribute("type", "movies");
+		return "list";
 	}
 
 	@GetMapping("/songs")
 	public String getSongs(Model model) {
 
 		List<Song> songs = getBestSongs();
-		model.addAttribute("songsList", songs);
-		return "songs";
+		model.addAttribute("list", songs);
+	    model.addAttribute("type", "songs");
+		return "list";
 	}
 
 	@GetMapping("/movies/{id}")
@@ -56,9 +57,8 @@ public class MainController {
 				break;
 			}
 		}
-	    model.addAttribute("movieTitle", movieTitle);
-	    
-	    return "movie";
+	    model.addAttribute("title", movieTitle);
+	    return "single";
 	}
 
 	@GetMapping("/songs/{id}")
@@ -74,8 +74,7 @@ public class MainController {
 				break;
 			}
 		}
-	    model.addAttribute("songTitle", songTitle);
-	    
-	    return "song";
+	    model.addAttribute("title", songTitle);
+	    return "single";
 	}
 }
