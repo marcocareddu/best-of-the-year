@@ -1,12 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Insert title here</title>
+	<title>Lista di film</title>
+
+	<!-- Bootstrap -->
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}">
+
+	<!-- CSS -->
+	<link rel="stylesheet" th:href="@{/css/application.css}">
 </head>
 
 <body>
+	
+	<!-- Navbar Here -->
+	<div th:insert="~{frags :: navbar}"></div>
+	
+	<div class="container">
+		<div class="dynamic-container text-center">
+			<h1>Best of by [[${username}]]</h1>
+		</div>
+	</div>
 
 </body>
 

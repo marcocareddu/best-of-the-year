@@ -1,12 +1,28 @@
-<!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Lista di canzoni</title>
+	<meta charset="ISO-8859-1">
+	<title>Lista di film</title>
+
+	<!-- Bootstrap -->
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}">
+
+	<!-- CSS -->
+	<link rel="stylesheet" th:href="@{/css/application.css}">
 </head>
+
 <body>
-	<h1>Lista delle migliori canzoni</h1>
-	<p>[[${songsList}]]</p>
+	<div th:fragment="navbar" class="container">
+		<h1 class="text-center">Best Songs</h1>
+	</div>
+	<div class="d-flex justify-content-center">
+		<ul class="list-group">
+			<li th:each="song : ${songsList}" class="list-group-item">
+				<a th:insert="~{frags :: button-single(@{'/songs/' + ${song.id}}, ${song.title})}"></a>
+			</li>
+		</ul>
+	</div>
 
 </body>
+
 </html>

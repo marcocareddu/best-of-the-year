@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	
+		<!-- List Link -->
+		<a 
+			th:fragment="button-single(link, text)"
+			th:href="@{link}"
+			th:text="${text}"
+			class="btn btn-primary"
+		>
+		</a>
+		
+		<!-- Single Link -->
+		<a 
+			th:fragment="button-pages(link, text)"
+			th:href="${link}"
+			th:text="${text}"
+			class="btn btn-primary"
+		>
+		</a>
+	
+		<!-- Header/Nav -->
+		<div th:fragment="navbar" class="container">
+		<div class="box mt-5 black-border">
+			<div class="d-flex justify-content-start">
+				<div class="d-flex align-items-center">
+					<h3 class="px-5 mb-0">Best of</h3>
+				</div>
+				<div class="p-3">
+					<button class="btn btn-primary">
+						<a th:insert="~{frags :: button-pages(@{/movies}, 'Movies')}"></a>
+					</button>
+					<button class="btn btn-primary">
+						<a th:insert="~{frags :: button-pages(@{/songs}, 'Songs')}"></a></button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

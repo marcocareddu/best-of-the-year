@@ -6,17 +6,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class MainController {
 
+
 	@GetMapping("/")
-	@ResponseBody
 	public String index(Model model) {
 		String name = "Marco";
 		model.addAttribute("username", name);
-		return "<h1>Best of the year by " + name + "</h1>";
+		return "index";
 	}
 
 	private List<Movie> getBestMovies() {
@@ -31,22 +30,8 @@ public class MainController {
 
 	@GetMapping("/movies")
 	public String getMovies(Model model) {
-
 		List<Movie> movies = getBestMovies();
-		String moviesList = "";
-
-		for (int i = 0; i < movies.size(); i++) {
-			Movie movie = movies.get(i);
-			moviesList += movie.getId() + " - ";
-			moviesList += movie.getTitle();
-
-			if (i < movies.size() - 1) {
-				moviesList += ", ";
-			}
-		}
-
-		model.addAttribute("moviesList", moviesList);
-
+		model.addAttribute("moviesList", movies);
 		return "movies";
 	}
 
@@ -54,18 +39,7 @@ public class MainController {
 	public String getSongs(Model model) {
 
 		List<Song> songs = getBestSongs();
-		String songsList = "";
-
-		for (int i = 0; i < songs.size(); i++) {
-			Song song = songs.get(i);
-			songsList += song.getId() + " - ";
-			songsList += song.getTitle();
-
-			if (i < songs.size() - 1) {
-				songsList += ", ";
-			}
-		}
-		model.addAttribute("songsList", songsList);
+		model.addAttribute("songsList", songs);
 		return "songs";
 	}
 
